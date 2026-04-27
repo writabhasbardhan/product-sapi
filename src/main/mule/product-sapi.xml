@@ -143,4 +143,14 @@ output application/json
     <flow name="post:\createProducts:application\json:product-sapi-config">
         <logger level="INFO" message="post:\createProducts:application\json:product-sapi-config" />
     </flow>
+    <flow name="delete:\deleteProduct:product-sapi-config">
+        <ee:transform doc:name="Transform Message">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+"Deleted Successfully" as String {encoding: "UTF-8", mediaType: "application/json"}]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+    </flow>
 </mule>

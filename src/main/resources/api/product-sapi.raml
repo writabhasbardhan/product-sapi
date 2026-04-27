@@ -72,6 +72,19 @@ baseUriParameters:
         body:
           application/json:
             type: !include /create-product-data-type.raml
+            
+/deleteProduct:
+  delete:
+    queryParameters:
+      id:
+        type: number
+        required: true
+        example: 1
+    responses:
+      200:
+        body:
+          application/json:
+            example: "Deleted Successfully"
 
 
   
