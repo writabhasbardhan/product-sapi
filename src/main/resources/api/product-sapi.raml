@@ -1,0 +1,77 @@
+#%RAML 1.0
+title: product-sapi
+version: v1
+baseUri: http://localhost:8081/{version}
+baseUriParameters:
+  version: 
+    default: v1
+    enum: [v1 , v2]
+    description: version of the system api
+    displayName: version
+    maxLength: 2
+    minLength: 1
+    type: string
+    required: true
+    example: "v1"
+
+/createProduct:
+  post:
+    body:
+      application/json:
+        type: !include /create-product-data-type.raml
+    responses:
+      201:
+        body:
+          application/json:
+            type: object
+            properties:
+              message:
+                example:
+                  "Created Successfully" 
+
+/createProducts:
+  post:
+    body:
+      application/json:
+        type: !include /create-products-data-type.raml
+    responses:
+      201:
+        body:
+          application/json:
+            type: object
+            properties:
+              message:
+                example:
+                  "Created Successfully" 
+
+/getAllProducts:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include /create-products-data-type.raml
+
+/getProduct/{id}:
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include /create-product-data-type.raml
+
+/getProduct:
+  get:
+    queryParameters:
+      id:
+        type: number
+        required: true
+        example: 1
+    responses:
+      200:
+        body:
+          application/json:
+            type: !include /create-product-data-type.raml
+
+
+  
